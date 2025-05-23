@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']); // Hapus setelah ditampilkan
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -10,11 +18,9 @@
     <div class="container">
         <div class="form-container">
             <h2>Registrasi</h2>
-            <?php
-            if (isset($error)) {
-                echo '<div class="error-message">' . $error . '</div>';
-            }
-            ?>
+            <?php if (isset($error)): ?>
+                <div class="error-message"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
             <form action="includes/register_process.php" method="POST">
                 <div class="form-group">
                     <label for="username">Username:</label>
