@@ -1,13 +1,4 @@
-<?php
-session_start();
-require_once 'includes/config.php';
-
-// Ambil error dari session jika ada
-if (isset($_SESSION['error'])) {
-    $error = $_SESSION['error'];
-    unset($_SESSION['error']);
-}
-?>
+<?php require_once 'includes/config.php'; ?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -26,7 +17,7 @@ if (isset($_SESSION['error'])) {
                 echo '<div class="success-message">Registrasi berhasil! Silakan login.</div>';
             }
             if (isset($error)) {
-                echo '<div class="error-message">' . htmlspecialchars($error) . '</div>';
+                echo '<div class="error-message">' . $error . '</div>';
             }
             ?>
             <form action="includes/login_process.php" method="POST">
